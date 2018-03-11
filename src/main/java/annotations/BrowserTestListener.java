@@ -22,7 +22,7 @@ public class BrowserTestListener implements IInvokedMethodListener2 {
         if(iInvokedMethod.isTestMethod() && isAnnotationPresent(iInvokedMethod, BrowserTest.class)) {
             LOG.info("Initialising WebDriver");
             WebDriver driver = new FirefoxDriver();
-            LOG.info("WebDriver initialised, adding to iTestContext");
+            LOG.info("WebDriver initialised, adding to ITestContext");
             iTestContext.setAttribute("driver", driver);
         }
     }
