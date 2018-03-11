@@ -1,38 +1,41 @@
 package example;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
+import annotations.BrowserTest;
 
 /**
- * Created by steve on 10/03/18.
+ * Proof of concept test steps
+ *
+ * @author steve
  */
 public class PocTest {
-    private WebDriver driver;
-
-    @BeforeSuite(alwaysRun = true)
-    public static void setupClass() {
-        WebDriverManager.firefoxdriver().setup();
-    }
-
-    @BeforeTest
-    public void beforeTest() {
-        driver = new FirefoxDriver();
-    }
-
-    @AfterTest
-    public void afterTest() {
-        if(driver != null) {
-            driver.quit();
-        }
+    @Test
+    @BrowserTest
+    public void simpleTest(ITestContext context) {
+        ((WebDriver) context.getAttribute("driver")).get("http://www.bbc.co.uk");
+        String title = ((WebDriver) context.getAttribute("driver")).getTitle();
+        Assert.assertTrue(title.contains("BBC - Home"));
     }
 
     @Test
-    public void simpleTest() {
-        driver.get("http://www.bbc.co.uk");
-        String title = driver.getTitle();
+    @BrowserTest
+    public void duplicateOfSimpleTest(ITestContext context) {
+        ((WebDriver) context.getAttribute("driver")).get("http://www.bbc.co.uk");
+        String title = ((WebDriver) context.getAttribute("driver")).getTitle();
         Assert.assertTrue(title.contains("BBC - Home"));
     }
+
+    @Test
+    public void aTestThatDoesntUseSeleneium() {
+        Assert.assertTrue(true);
+    }
+
+    @Test
+    public void aTestThatDoesntUseSeleniumAlsoFails() {
+        Assert.assertTrue(false);
+    }
+
 }

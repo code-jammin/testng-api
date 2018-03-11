@@ -3,6 +3,7 @@
     <test name="Simple Test">
         <classes>
             <class name="example.PocTest"/>
+            <class name="support.TestConfiguration"/>
         </classes>
     </test>
 </suite>
