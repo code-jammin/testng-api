@@ -14,7 +14,7 @@ public class LandingPage extends AbstractPageFile {
         super(driver, environment);
     }
 
-    public String getUrl() {
+    protected String getUrl() {
         return getEnvironment().getPortalBaseUrl();
     }
 }

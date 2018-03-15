@@ -1,12 +1,10 @@
 package testcases;
 
 import model.framework.Environment;
-import model.framework.PageFactory;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.ITest;
 import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -16,11 +14,10 @@ import org.testng.annotations.BeforeMethod;
  *
  * @author steve
  */
-public class BaseTest {
+public abstract class BaseTest {
     protected final static Logger LOG = LoggerFactory.getLogger(BaseTest.class);
 
     private Environment environment;
-    private PageFactory pageFactory;
 
     /**
      * Convenience method that assigns the environment to a field
@@ -33,7 +30,6 @@ public class BaseTest {
         if (environment == null) {
             Assert.assertNotNull(environment, "The environment is null, it has not been added to the ITestContext correctly.");
         }
-        LOG.error("RUNNING BEFORE METHOD");
     }
 
     /**
@@ -60,30 +56,6 @@ public class BaseTest {
             Assert.assertNotNull(environment, "The environment is null, make sure it is getting set correctly.");
         }
         return environment;
-    }
-
-    /**
-     * Getter for the page files object
-     *
-     * @return pageFactory object
-     */
-    protected PageFactory getPageFactory() {
-        if (pageFactory == null) {
-            pageFactory = getPageFactoryFromContext()
-
-            Assert.assertNotNull(pageFactory, "The pageFactory are null, it is likely they have not been initialised by including a @BrowserTest annotation");
-        }
-        return null;
-    }
-
-    /**
-     * Attempts to fetch the page factory from the context
-     *
-     * @param context the ITestContext for the current test
-     * @return PageFactory from the ITestContext
-     */
-    private PageFactory getPageFactoryFromContext(ITestContext context) {
-        return (PageFactory) context.getAttribute("pageFactory");
     }
 
     /**

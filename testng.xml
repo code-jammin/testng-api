@@ -1,8 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="ExampleSuite" parallel="none">
-    <test name="Simple Test">
+    <test name="Simple Test Suite">
         <classes>
-            <class name="testcases.PocTest"/>
+            <class name="testcases.PocWebTest"/>
+            <class name="testcases.PocTest" />
             <class name="support.TestConfiguration"/>
         </classes>
     </test>

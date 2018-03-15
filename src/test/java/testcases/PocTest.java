@@ -3,11 +3,9 @@ package testcases;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
-import annotations.BrowserTest;
 
 import java.io.IOException;
 
@@ -17,21 +15,6 @@ import java.io.IOException;
  * @author steve
  */
 public class PocTest extends BaseTest {
-    @Test
-    @BrowserTest
-    public void simpleTest(ITestContext context) {
-        ((WebDriver) context.getAttribute("driver")).get(getEnvironment().getPortalBaseUrl());
-        String title = ((WebDriver) context.getAttribute("driver")).getTitle();
-        Assert.assertTrue(title.contains("BBC - Home"));
-    }
-
-    @Test
-    @BrowserTest
-    public void duplicateOfSimpleTest(ITestContext context) {
-        ((WebDriver) context.getAttribute("driver")).get(getEnvironment().getPortalBaseUrl());
-        String title = ((WebDriver) context.getAttribute("driver")).getTitle();
-        Assert.assertTrue(title.contains("BBC - Home"));
-    }
 
     @Test
     public void apiTest(ITestContext context) throws IOException {

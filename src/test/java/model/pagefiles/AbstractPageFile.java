@@ -18,10 +18,14 @@ public abstract class AbstractPageFile {
         this.environment = environment;
     }
 
-    public abstract String getUrl();
+    protected abstract String getUrl();
 
     public void load() {
         driver.get(getUrl());
+    }
+
+    public String getPageTitle() {
+        return driver.getTitle();
     }
 
     protected Environment getEnvironment() {
