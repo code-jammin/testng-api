@@ -4,14 +4,24 @@ import model.framework.Environment;
 import okhttp3.OkHttpClient;
 
 /**
- * Created by steve on 13/03/18.
+ * The abstract class for an API endpoint connector.
+ *
+ * @author steve
  */
 public abstract class AbstractConnector implements Connector {
-    protected final Environment environment;
-    protected final OkHttpClient httpClient;
+    private final Environment environment;
+    private final OkHttpClient httpClient;
 
-    public AbstractConnector(Environment environment, OkHttpClient httpClient) {
+    public AbstractConnector(Environment environment) {
         this.environment = environment;
-        this.httpClient = httpClient;
+        httpClient = new OkHttpClient();
+    }
+
+    public Environment getEnvironment() {
+        return environment;
+    }
+
+    public OkHttpClient getHttpClient() {
+        return httpClient;
     }
 }
