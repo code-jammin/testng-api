@@ -8,6 +8,8 @@ package model.framework;
 public interface Environment {
     public String getExternalApiHost();
 
+    public int getExternalApiPort();
+
     public String getPortalBaseUrl();
 
     public void logValues();

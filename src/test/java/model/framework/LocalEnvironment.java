@@ -11,7 +11,8 @@ import org.slf4j.LoggerFactory;
 public class LocalEnvironment implements Environment {
     private static final Logger LOG = LoggerFactory.getLogger(LocalEnvironment.class);
 
-    private static final String EXTERNAL_API_HOST = "http://localhost:8082";
+    private static final String EXTERNAL_API_HOST = "localhost";
+    private static final int EXTERNAL_API_PORT = 8082;
     private static final String PORTAL_BASE_URL = "http://www.bbc.co.uk";
 
     public LocalEnvironment() {
@@ -21,6 +22,11 @@ public class LocalEnvironment implements Environment {
     @Override
     public String getExternalApiHost() {
         return EXTERNAL_API_HOST;
+    }
+
+    @Override
+    public int getExternalApiPort() {
+        return EXTERNAL_API_PORT;
     }
 
     @Override

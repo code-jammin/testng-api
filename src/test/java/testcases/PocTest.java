@@ -43,5 +43,4 @@ public class PocTest extends BaseTest {
     public void aTestThatDoesntUseSeleniumAlsoFails() {
         Assert.assertTrue(false);
     }
-
 }

@@ -4,6 +4,7 @@
         <classes>
             <class name="testcases.PocWebTest"/>
             <class name="testcases.PocTest" />
+            <class name="testcases.PocApiTest" />
             <class name="support.TestConfiguration"/>
         </classes>
     </test>
